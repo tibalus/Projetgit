@@ -1,0 +1,25 @@
+@startuml
+class User <<entity>> {
+-IdUser : int{id}
+-Username : string
+-Password : string
+}
+class Jeux <<entity>> {
+
+-IdJeu: int{id}
+- NomJeu : string
+- DescriptionJeu : string
+- Catégorie : int
+- PrixJeu: int
+- DateAjout: date
+}
+class Catégorie <<entity>> {
+-IdCat: int{id}
+-NomCat: string
+}
+class Collection <<entity>> {
+-nbJeux : int
+}
+Jeux -- Catégorie
+Collection --- Jeux
+@enduml
