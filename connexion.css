@@ -1,7 +1,5 @@
 /* Bordered form */
-form {
-    border: 3px solid #ccc;
-  }
+
   
   /* Full-width inputs */
   input[type=text], input[type=password] {
@@ -53,9 +51,11 @@ form {
   
   /* Add padding to containers */
   .container {
-    padding: 400;
+    border:none;
+    padding: 32px;
     font-family: 'Press Start 2P', cursive;
-    color:rgb(160, 214, 247)
+    color:rgb(255, 0, 255)
+
   }
   
   /* The "Forgot password" text */
@@ -77,10 +77,12 @@ form {
   body {
     background-image: url("pixel-jeff-clipa-s.gif");
     background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-size: cover;
    }
 .titre{text-align: center;
   font-family: 'Press Start 2P', cursive;
-    color:purple
+    color:rgb(255, 0, 255)
 
   
 }

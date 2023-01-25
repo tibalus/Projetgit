@@ -12,15 +12,11 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container p-5 my-5 border">
+<div class="container">
   <h1 class="titre">ProjetGit</h1>
   <p class="texte">Ce projet est une révolution dans l'indsutrie du jeu vidéo ! Elle vous permet de stocker tout vos jeux !! Cela est pratique pour les gens atteints de problèmes de mémoire par exemple</p>
-  <a href="inscription.php"><button type="button" class="btn btn-light">Inscription</button></a>
-  <a href="connexion.php"><button type="button" class="btn btn-dark">Connexion</button></a>
-  
+  <a href="inscription_form.php"><button type="button" class="btn btn-light">Inscription</button></a>
+  <a href="form.php"><button type="button" class="btn btn-dark">Connexion</button></a>
 </div>
-
-
-
 </body>
 </html>
