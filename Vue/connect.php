@@ -1,7 +1,8 @@
 <?php
-  //connexion à la base de données
-  $con = mysqli_connect("localhost","root","","projetgit");
-  if(!$con){
-     echo "Vous n'êtes pas connecté à la base de donnée";
-  }
+try {
+  $con = new PDO("mysql:host=localhost;dbname=projetgit", "root", "");
+  $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+  echo "Error: " . $e->getMessage();
+}
 ?>

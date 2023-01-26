@@ -1,27 +1,41 @@
 
 <?php
-session_start();
 require_once "C:\wamp\www\Projetgit\Vue\connect.php";
 if(isset($_POST["submit"]))
 {
     $username = $_POST['uname'];
     $pass = $_POST['psw'];
-    $sql = "SELECT * FROM user WHERE username = '$username'";
-    $result = $con->prepare($sql);
-    $result->execute();
-    if(isset($_POST['uname']) && ($_POST['psw']))
+    if (!empty($_POST['uname']) AND !empty($_POST['psw']))
     {
-        $user_check = ("SELECT COUNT(*) FROM user WHERE username = '".$_POST['uname']."' AND passwd = '" .($_POST['psw']) . "'");
-        $result = $con->prepare($user_check);
-        $result->execute();
-        if($result)
-        {
-            header("collection.php");
-            $_SESSION['uname'] = $username;
-        }
-        else{
-            $message="Mot de passe ou Username INCORRECT";
+        $sqlQuery = 'SELECT * FROM user WHERE username = :username';
+        $hash = password_hash( $_POST['psw'], PASSWORD_DEFAULT);
+        $sql = $con->prepare($sqlQuery);
+        $sql->execute([
+        'username' => $_POST['uname'],
+        
+        ]);
+        $data = $sql->fetchAll();
+       
+        var_dump($data);
+   
+            if (!empty($data)) {
+               
+               if (password_verify($pass, $data[0]['pasword'])) {
+
+                  session_start();
+                  $_SESSION['id'] = $data[0]['id_user'];
+                  $_SESSION['username'] = $username;
+                  echo "Vous êtes connecté !";
+                  header("location:collection.php");
+               } else {
+                  echo "Mauvais identifiant ou mot de passe !";
+               }
+            } else {
+               echo "Aucun utilisateur ne correspond à ces informations de connexion";
             }
+         
+         
+         
     }
 }
-?>
+?>               
