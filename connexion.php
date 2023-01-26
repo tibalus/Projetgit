@@ -9,18 +9,19 @@ if(isset($_POST["submit"]))
     $sql = "SELECT * FROM user WHERE username = '$username'";
     $result = $con->prepare($sql);
     $result->execute();
-
-    if($result->num_rows > 0)
+    if(isset($_POST['uname']) && ($_POST['psw']))
     {
-        $data = $result->fetchAll();
-        if(password_verify($pass,$data[0]["psw"]))
+        $user_check = ("SELECT COUNT(*) FROM user WHERE username = '".$_POST['uname']."' AND passwd = '" .($_POST['psw']) . "'");
+        $result = $con->prepare($user_check);
+        $result->execute();
+        if($result)
         {
+            header("collection.php");
             $_SESSION['uname'] = $username;
         }
         else{
-            echo"Mot de passe ou Username INCORRECT";
+            $message="Mot de passe ou Username INCORRECT";
             }
     }
 }
-
 ?>
