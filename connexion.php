@@ -25,6 +25,7 @@ if(isset($_POST["submit"]))
                   session_start();
                   $_SESSION['id'] = $data[0]['id_user'];
                   $_SESSION['username'] = $username;
+                  $name=$_SESSION['username'];
                   echo "Vous êtes connecté !";
                   header("location:collection.php");
                } else {
